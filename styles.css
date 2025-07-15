@@ -1225,14 +1225,41 @@ textarea:focus {
     padding: 0 2rem;
 }
 
+.certification-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .certification-card {
-    display: flex;
-    align-items: center;
     background: linear-gradient(135deg, #f5f7fa, #e9ecef);
     border-radius: 15px;
+    padding: 2.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.certification-card h3 {
+    color: var(--primary-purple);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.certification-card p {
+    color: #4a5568;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
 .certification-icon {
