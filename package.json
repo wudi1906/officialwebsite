@@ -1,0 +1,24 @@
+{
+  "name": "officialwebsite",
+  "version": "1.0.0",
+  "description": "这是 DataPioneers LLC 的官方网站项目，使用 HTML5、CSS3 和 JavaScript 构建。",
+  "main": "generate-meeting-image.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wudi1906/officialwebsite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/wudi1906/officialwebsite/issues"
+  },
+  "homepage": "https://github.com/wudi1906/officialwebsite#readme",
+  "dependencies": {
+    "canvas": "^3.1.2"
+  }
+}

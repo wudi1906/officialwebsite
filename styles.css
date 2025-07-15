@@ -1142,3 +1142,123 @@ textarea:focus {
         grid-template-columns: 1fr;
     }
 } 
+
+/* 合规页面特定样式 */
+.compliance-banner {
+    background: linear-gradient(135deg, #1a1a3a, #4a4a7a);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.compliance-banner .tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.certification-section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.certification-card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f7fa, #e9ecef);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.certification-icon {
+    flex: 0 0 150px;
+    margin-right: 2rem;
+}
+
+.certification-icon img {
+    max-width: 100%;
+    height: auto;
+}
+
+.certification-content {
+    flex: 1;
+}
+
+.certification-content h2 {
+    color: #1a1a3a;
+    margin-bottom: 1rem;
+}
+
+.learn-more {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #4a4a7a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: #6a6a9a;
+} 
+
+/* 合规页面第一屏幕样式 */
+.compliance-hero {
+    display: flex;
+    background: linear-gradient(to right, #1a2980, #26d0ce);
+    color: white;
+    min-height: 600px;
+}
+
+.hero-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.hero-left {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.hero-right {
+    flex: 1;
+}
+
+.get-certified-tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.hero-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-left p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+} 
