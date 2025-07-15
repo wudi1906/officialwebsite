@@ -1,0 +1,519 @@
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeComponents();
+});
+
+// Initialize all components
+function initializeComponents() {
+    initNavigation();
+    initScrollEffects();
+    initAnimations();
+    initFormHandling();
+    initStatsCounter();
+    initSmoothScrolling();
+    initMobileMenu();
+}
+
+// Navigation functionality
+function initNavigation() {
+    const header = document.querySelector('.header');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Active navigation highlighting
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const sections = document.querySelectorAll('section[id]');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+// Mobile menu functionality
+function initMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// Scroll animations
+function initScrollEffects() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards and sections
+    const elementsToAnimate = document.querySelectorAll(`
+        .solution-card,
+        .stat-card,
+        .compliance-card,
+        .partner-logo,
+        .contact-item,
+        .hero-stats .stat-item
+    `);
+    
+    elementsToAnimate.forEach(el => {
+        el.classList.add('animate-on-scroll');
+        observer.observe(el);
+    });
+}
+
+// Enhanced animations
+function initAnimations() {
+    // Add stagger animation to cards
+    const cardGroups = [
+        document.querySelectorAll('.solution-card'),
+        document.querySelectorAll('.compliance-card'),
+        document.querySelectorAll('.partner-logo'),
+        document.querySelectorAll('.stat-card')
+    ];
+    
+    cardGroups.forEach(cards => {
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+    
+    // Hero title animation
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroCta = document.querySelector('.hero-cta');
+    
+    if (heroTitle) {
+        setTimeout(() => {
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0)';
+        }, 300);
+    }
+    
+    if (heroSubtitle) {
+        setTimeout(() => {
+            heroSubtitle.style.opacity = '1';
+            heroSubtitle.style.transform = 'translateY(0)';
+        }, 600);
+    }
+    
+    if (heroCta) {
+        setTimeout(() => {
+            heroCta.style.opacity = '1';
+            heroCta.style.transform = 'translateY(0)';
+        }, 900);
+    }
+}
+
+// Stats counter animation
+function initStatsCounter() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const countUp = (element, target) => {
+        const duration = 2000;
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            
+            // Format numbers appropriately
+            if (target >= 1000000) {
+                element.textContent = (current / 1000000).toFixed(1) + 'M+';
+            } else if (target >= 1000) {
+                element.textContent = (current / 1000).toFixed(0) + 'K+';
+            } else if (element.textContent.includes('<')) {
+                element.textContent = '<0.3%';
+            } else if (element.textContent.includes('min')) {
+                element.textContent = '4.7 min';
+            } else {
+                element.textContent = Math.floor(current) + '+';
+            }
+        }, 16);
+    };
+    
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                entry.target.classList.add('counted');
+                const text = entry.target.textContent;
+                
+                // Parse numbers from text
+                let target = 0;
+                if (text.includes('62M+')) target = 62000000;
+                else if (text.includes('130+')) target = 130;
+                else if (text.includes('1000+')) target = 1000;
+                else if (text.includes('<0.3%')) return; // Skip this one
+                else if (text.includes('4.7 min')) return; // Skip this one
+                
+                if (target > 0) {
+                    countUp(entry.target, target);
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => {
+        statsObserver.observe(stat);
+    });
+}
+
+// Smooth scrolling
+function initSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Form handling
+function initFormHandling() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleFormSubmit);
+        
+        // Add real-time validation
+        const formInputs = contactForm.querySelectorAll('input, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearError);
+        });
+    }
+}
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    
+    // Validate form
+    if (!validateForm(data)) {
+        return;
+    }
+    
+    // Show loading state
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Simulate form submission (replace with actual API call)
+    setTimeout(() => {
+        showNotification('Thank you! Your message has been sent successfully.', 'success');
+        e.target.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 2000);
+}
+
+function validateForm(data) {
+    let isValid = true;
+    
+    // Name validation
+    if (!data.name || data.name.trim().length < 2) {
+        showFieldError('name', 'Name must be at least 2 characters long');
+        isValid = false;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!data.email || !emailRegex.test(data.email)) {
+        showFieldError('email', 'Please enter a valid email address');
+        isValid = false;
+    }
+    
+    // Subject validation
+    if (!data.subject || data.subject.trim().length < 5) {
+        showFieldError('subject', 'Subject must be at least 5 characters long');
+        isValid = false;
+    }
+    
+    // Message validation
+    if (!data.message || data.message.trim().length < 10) {
+        showFieldError('message', 'Message must be at least 10 characters long');
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+function validateField(e) {
+    const field = e.target;
+    const value = field.value.trim();
+    
+    clearError(e);
+    
+    switch (field.name) {
+        case 'name':
+            if (value.length < 2) {
+                showFieldError('name', 'Name must be at least 2 characters long');
+            }
+            break;
+        case 'email':
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (value && !emailRegex.test(value)) {
+                showFieldError('email', 'Please enter a valid email address');
+            }
+            break;
+        case 'subject':
+            if (value.length < 5) {
+                showFieldError('subject', 'Subject must be at least 5 characters long');
+            }
+            break;
+        case 'message':
+            if (value.length < 10) {
+                showFieldError('message', 'Message must be at least 10 characters long');
+            }
+            break;
+    }
+}
+
+function showFieldError(fieldName, message) {
+    const field = document.getElementById(fieldName);
+    const formGroup = field.closest('.form-group');
+    
+    // Remove existing error
+    const existingError = formGroup.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Add error styling
+    field.style.borderColor = '#ef4444';
+    
+    // Add error message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.color = '#ef4444';
+    errorDiv.style.fontSize = '0.875rem';
+    errorDiv.style.marginTop = '0.25rem';
+    errorDiv.textContent = message;
+    
+    formGroup.appendChild(errorDiv);
+}
+
+function clearError(e) {
+    const field = e.target;
+    const formGroup = field.closest('.form-group');
+    const errorMessage = formGroup.querySelector('.error-message');
+    
+    if (errorMessage) {
+        errorMessage.remove();
+    }
+    
+    field.style.borderColor = '#e5e7eb';
+}
+
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 400px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    `;
+    
+    // Set background color based on type
+    const colors = {
+        success: '#10b981',
+        error: '#ef4444',
+        warning: '#f59e0b',
+        info: '#3b82f6'
+    };
+    
+    notification.style.backgroundColor = colors[type] || colors.info;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 300);
+    }, 5000);
+}
+
+// Utility functions
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Performance optimizations
+const debouncedScrollHandler = debounce(() => {
+    // Handle scroll events that don't need immediate response
+}, 16);
+
+const throttledScrollHandler = throttle(() => {
+    // Handle scroll events that need immediate response
+}, 16);
+
+// Error handling
+window.addEventListener('error', (e) => {
+    console.error('JavaScript error:', e.error);
+    // Optionally send error to logging service
+});
+
+// Initialize performance monitoring
+function initPerformanceMonitoring() {
+    if ('performance' in window) {
+        window.addEventListener('load', () => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            console.log('Page load time:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+        });
+    }
+}
+
+// Initialize accessibility features
+function initAccessibility() {
+    // Add keyboard navigation support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
+    });
+    
+    // Add ARIA labels to interactive elements
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        if (!button.getAttribute('aria-label') && !button.textContent.trim()) {
+            button.setAttribute('aria-label', 'Button');
+        }
+    });
+}
+
+// Initialize all features when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initPerformanceMonitoring();
+    initAccessibility();
+});
+
+// Service Worker registration (for future PWA features)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // Uncomment when you have a service worker
+        // navigator.serviceWorker.register('/sw.js')
+        //     .then(registration => console.log('SW registered'))
+        //     .catch(error => console.log('SW registration failed'));
+    });
+} 
