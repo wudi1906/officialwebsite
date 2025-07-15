@@ -1,0 +1,67 @@
+:root {
+    --primary-purple: #4A3FBB;
+    --secondary-blue: #1E2A78;
+    --gradient-start: #4A3FBB;
+    --gradient-end: #1E2A78;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: white;
+    padding: 80px 10%;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-content {
+    flex: 1;
+    z-index: 2;
+    position: relative;
+}
+
+.banner-text {
+    max-width: 600px;
+}
+
+.banner-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.banner-text p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.banner-image {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 5%;
+    }
+
+    .banner-text {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .banner-text h1 {
+        font-size: 2.5rem;
+    }
+} 

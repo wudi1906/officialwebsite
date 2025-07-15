@@ -627,63 +627,76 @@ body {
 }
 
 /* Footer */
-.footer {
-    background: var(--bg-dark);
-    color: white;
-    padding: 3rem 0 1rem;
+footer {
+    background-color: #0a0e1a;
+    color: #ffffff;
+    padding: 40px 0 20px;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.footer-section h3,
-.footer-section h4 {
-    margin-bottom: 1rem;
-    color: white;
+.footer-column {
+    flex: 1;
+    margin-right: 20px;
 }
 
-.footer-section h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
+.footer-column:last-child {
+    margin-right: 0;
 }
 
-.footer-section h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
 }
 
-.footer-section p {
-    color: rgba(255, 255, 255, 0.8);
+.footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.footer-column p {
+    font-size: 14px;
+    color: #a0a0a0;
     line-height: 1.6;
 }
 
-.footer-section ul {
+.footer-column ul {
     list-style: none;
+    padding: 0;
 }
 
-.footer-section ul li {
-    margin-bottom: 0.5rem;
+.footer-column ul li {
+    margin-bottom: 8px;
 }
 
-.footer-section ul li a {
-    color: rgba(255, 255, 255, 0.8);
+.footer-column ul li a {
+    color: #a0a0a0;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.footer-section ul li a:hover {
-    color: white;
+.footer-column ul li a:hover {
+    color: #ffffff;
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
     text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    padding-top: 20px;
+    border-top: 1px solid #1a2233;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #a0a0a0;
 }
 
 /* Responsive Design */
@@ -1307,4 +1320,124 @@ textarea:focus {
 .privacy-content ul li {
     margin-bottom: 10px;
     color: #333;
+} 
+
+/* 有效日期部分样式 */
+.effective-date {
+    background-color: #f4f4f4;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Hero Section 样式调整 */
+.hero-section {
+    display: flex;
+    background: linear-gradient(to right, #4A3FBB, #1E2A78);
+    color: white;
+    min-height: 500px;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.hero-left {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.hero-right {
+    flex: 1;
+}
+
+.section-tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.hero-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-left p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+} 
+
+/* Footer Styles */
+.footer {
+    background-color: #0F172A;
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 2rem;
+}
+
+.footer-section:last-child {
+    margin-right: 0;
+}
+
+.footer-section h3, 
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
 } 
