@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="load-components.js"></script>
     <style>
         :root {
             --primary-purple: #4A3FBB;
@@ -152,46 +153,8 @@
             line-height: 1.6;
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-        });
-    </script>
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <h2>Datapioneers LLC</h2>
-                </div>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="index.html#solutions" class="nav-link">Solutions</a></li>
-                    <li class="nav-item"><a href="index.html#panelist" class="nav-link">Panelist</a></li>
-                    <li class="nav-item"><a href="index.html#partners" class="nav-link">Partners</a></li>
-                    <li class="nav-item"><a href="compliance.html" class="nav-link active">Compliance</a></li>
-                    <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
-                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="nav-cta">
-                </div>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
     <main>
         <!-- 合规页面 Banner 区域 -->
         <section class="compliance-hero">
@@ -231,36 +194,6 @@
             <h2>While we do not claim formal certification in all listed frameworks, our internal systems and best practices are modeled to comply with these standards.</h2>
         </section>
     </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Datapioneers LLC</h3>
-                <p>Leading provider of global consumer insights through intelligent survey solutions.</p>
-            </div>
-            <div class="footer-column">
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="index.html#panelist">Join Panel</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="compliance.html">Compliance</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Datapioneers LLC. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <div id="footer-container"></div>
 </body>
 </html> 
