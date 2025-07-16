@@ -1622,3 +1622,85 @@ textarea:focus {
     align-items: center;
     justify-content: center;
 } 
+
+/* Cookie Policy Modal Styles */
+.cookie-policy-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cookie-policy-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cookie-policy-content h2 {
+    color: #333;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+}
+
+.cookie-policy-content h3 {
+    color: #444;
+    margin-top: 20px;
+}
+
+.cookie-policy-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.cookie-policy-content table, 
+.cookie-policy-content th, 
+.cookie-policy-content td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.cookie-policy-content th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.cookie-policy-content ul {
+    margin-left: 20px;
+}
+
+.cookie-policy-content address {
+    font-style: normal;
+    margin-top: 15px;
+} 

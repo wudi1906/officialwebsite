@@ -517,3 +517,82 @@ if ('serviceWorker' in navigator) {
         //     .catch(error => console.log('SW registration failed'));
     });
 } 
+
+function openCookiePolicy() {
+    const cookiePolicyContent = `
+        <div class="cookie-policy-modal">
+            <div class="cookie-policy-content">
+                <span class="close-modal">&times;</span>
+                <h2>Cookie Policy</h2>
+                <p><strong>Last updated: July 2025</strong></p>
+                
+                <h3>1. Introduction</h3>
+                <p>We are committed to transparency regarding how we use cookies and similar technologies on our website. This Cookie Policy explains what cookies are, how we use them, and your choices regarding their usage.</p>
+                
+                <h3>2. What Are Cookies?</h3>
+                <p>Cookies are small text files stored on your device when you visit a website. They are widely used to ensure websites function properly, improve user experience, and collect aggregated information.</p>
+                
+                <h3>3. Types of Cookies We Use</h3>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>Essential Cookies</td>
+                        <td>Required for the website to function. These include session cookies, authentication cookies, and security cookies.</td>
+                    </tr>
+                    <tr>
+                        <td>Performance Cookies</td>
+                        <td>Help us understand how visitors interact with our website (e.g., load balancing, uptime monitoring).</td>
+                    </tr>
+                    <tr>
+                        <td>Preference Cookies</td>
+                        <td>(If applicable) Store user settings like language or region. (Only if used)</td>
+                    </tr>
+                </table>
+                
+                <p><strong>❗ Note: We do not use cookies for advertising, cross-site tracking, profiling, or behavioral targeting.</strong></p>
+                
+                <h3>4. Third-Party Cookies</h3>
+                <p>We do not use third-party cookies for advertising, analytics, or remarketing. All cookies currently in use are first-party and necessary for technical functionality.</p>
+                
+                <h3>5. Managing Cookies</h3>
+                <p>You can control and delete cookies through your browser settings. Most browsers allow you to refuse or delete cookies. However, disabling certain cookies may impact site functionality.</p>
+                
+                <p>For more information:</p>
+                <ul>
+                    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Manage cookies in Chrome</a></li>
+                    <li><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank">Manage cookies in Firefox</a></li>
+                    <li><a href="https://support.apple.com/en-us/HT201265" target="_blank">Manage cookies in Safari</a></li>
+                </ul>
+                
+                <h3>6. Contact Us</h3>
+                <p>If you have questions about this Cookie Policy or how we handle personal data, please contact us at:</p>
+                <address>
+                    Datapioneers LLC<br>
+                    Email: support@datapioneers.net<br>
+                    Address: 1908 Thomes Ave Ste 12018, Cheyenne, WY 82001
+                </address>
+            </div>
+        </div>
+    `;
+
+    // 创建模态框元素
+    const modalDiv = document.createElement('div');
+    modalDiv.innerHTML = cookiePolicyContent;
+    document.body.appendChild(modalDiv);
+
+    // 关闭模态框的逻辑
+    const closeModal = modalDiv.querySelector('.close-modal');
+    closeModal.addEventListener('click', () => {
+        document.body.removeChild(modalDiv);
+    });
+
+    // 点击模态框外部关闭
+    modalDiv.addEventListener('click', (event) => {
+        if (event.target === modalDiv.querySelector('.cookie-policy-modal')) {
+            document.body.removeChild(modalDiv);
+        }
+    });
+} 

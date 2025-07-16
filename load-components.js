@@ -51,4 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.appendChild(footerElement);
             }
         });
+
+    // 加载 script.js
+    const scriptElement = document.createElement('script');
+    scriptElement.src = 'script.js';
+    document.body.appendChild(scriptElement);
 }); 
