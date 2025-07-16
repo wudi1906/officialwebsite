@@ -97,6 +97,40 @@
             margin-bottom: 2rem;
             font-size: 2.5rem;
         }
+        .compliance-text {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(76, 81, 191, 0.05), rgba(102, 126, 234, 0.05));
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .compliance-text::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .compliance-text h2 {
+            font-size: 1.1rem;
+            color: var(--secondary-blue);
+            line-height: 1.7;
+            font-weight: 400;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
         .certification-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -191,6 +225,10 @@
                     <p>Rigorous audit of our security controls, ensuring the protection of customer data throughout our service delivery.</p>
                 </div>
             </div>
+        </section>
+
+        <section class="compliance-text">
+            <h2>While we do not claim formal certification in all listed frameworks, our internal systems and best practices are modeled to comply with these standards.</h2>
         </section>
     </main>
 

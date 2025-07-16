@@ -154,10 +154,24 @@
             margin: 4rem auto;
             gap: 4rem;
             padding: 0 2rem;
+            position: relative;
+            align-items: center;
+            min-height: 600px; /* 增加最小高度 */
+        }
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-purple);
+            transform: translateX(-50%);
         }
         .timeline-text {
             flex: 0 0 50%;
             padding-right: 2rem;
+            text-align: right;
         }
         .timeline-text h2 {
             font-size: 2.5rem;
@@ -166,54 +180,62 @@
         }
         .timeline-text p {
             color: #6b7280;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            max-width: 500px;
+            margin-left: auto;
         }
         .timeline-container {
             flex: 0 0 50%;
-            max-height: 600px;
+            max-height: 500px; /* 限制最大高度 */
             overflow-y: auto;
-            padding-right: 1rem;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-purple) #e0e0e0;
+            padding-left: 2rem;
+            position: relative; /* 为滚动提示定位 */
         }
+        /* 滚动提示样式 */
+        .timeline-container::after {
+            content: '↓';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(74, 63, 187, 0.1);
+            color: var(--primary-purple);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .timeline-container:hover::after {
+            opacity: 0;
+        }
+        /* 自定义滚动条 */
         .timeline-container::-webkit-scrollbar {
             width: 8px;
         }
         .timeline-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: rgba(74, 63, 187, 0.1);
         }
         .timeline-container::-webkit-scrollbar-thumb {
             background: var(--primary-purple);
             border-radius: 4px;
         }
         .timeline-grid {
-            position: relative;
-            padding-left: 2rem;
-        }
-        .timeline-grid::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background-color: var(--primary-purple);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
         .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+            text-align: left;
         }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.25rem;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            background-color: var(--primary-purple);
-            border-radius: 50%;
+        .timeline-item:hover {
+            transform: translateY(-10px);
         }
         .timeline-item-year {
             color: var(--primary-purple);
@@ -264,12 +286,12 @@
         <section class="about-hero">
             <div class="about-hero-content">
                 <div class="about-hero-text">
-                    <span class="hero-tag">The DataPioneers Story</span>
-                    <h1>DataPioneers is a global leader in market research and measurement technology</h1>
-                    <p>With access to millions of respondents across 130+ countries, we transform complex data into actionable insights.</p>
+                    <span class="hero-tag">A Global Platform for Trusted Market Insights</span>
+                    <h1>DataPioneers is a global platform for high-quality market research and measurement</h1>
+                    <p>With verified respondents across 130+ countries, we deliver trusted, real-time data to power informed decisions.</p>
                 </div>
                 <div class="about-hero-image">
-                    <img src="ai.png" alt="DataPioneers Global Reach">
+                    <img src="sunrise.png" alt="DataPioneers Global Reach">
                 </div>
             </div>
         </section>
@@ -277,30 +299,26 @@
         <!-- Company History Timeline -->
         <section class="timeline-section">
             <div class="timeline-text">
-                <h2>The History of DataPioneers</h2>
-                <p>Since our inception in 1998, DataPioneers has evolved from a small startup to a global leader in market research technology. Our journey reflects a commitment to innovation, scalability, and delivering exceptional value to our clients.</p>
+                <h2>What We Deliver</h2>
+                <p>With a strong foundation in survey execution, quality control, and respondent engagement, our system is built to support reliable business decisions.</p>
             </div>
             <div class="timeline-container">
                 <div class="timeline-grid">
                     <div class="timeline-item">
-                        <div class="timeline-item-year">1998</div>
-                        <div class="timeline-item-title">Where We Began</div>
-                        <div class="timeline-item-description">Founded with a vision to democratize data research and provide unprecedented access to global insights.</div>
+                        <div class="timeline-item-title">Global Coverage</div>
+                        <div class="timeline-item-description">Connect with respondents in 130+ countries, with localized targeting and multilingual support.</div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-item-year">2019</div>
-                        <div class="timeline-item-title">First Major Expansion</div>
-                        <div class="timeline-item-description">Established international offices and expanded our research network across multiple countries.</div>
+                        <div class="timeline-item-title">Verified Quality</div>
+                        <div class="timeline-item-description">All responses go through fraud detection, response time checks, and geo-validation to ensure data reliability.</div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-item-year">2021</div>
-                        <div class="timeline-item-title">Technology Innovation</div>
-                        <div class="timeline-item-description">Launched advanced AI-driven data collection and analysis platforms, revolutionizing market research.</div>
+                        <div class="timeline-item-title">Flexible Integration</div>
+                        <div class="timeline-item-description">Easily connect via API, offerwall, iframe, or targeted email campaigns — depending on your project needs.</div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-item-year">2022</div>
-                        <div class="timeline-item-title">Global Recognition</div>
-                        <div class="timeline-item-description">Recognized as a leader in market research technology with innovative survey solutions.</div>
+                        <div class="timeline-item-title">Transparent Reporting</div>
+                        <div class="timeline-item-description">Access real-time dashboards, delivery logs, and quality metrics for each campaign.</div>
                     </div>
                 </div>
             </div>
