@@ -596,3 +596,74 @@ function openCookiePolicy() {
         }
     });
 } 
+
+function openTermsOfService() {
+    const termsOfServiceContent = `
+        <div class="terms-of-service-modal">
+            <div class="terms-of-service-content">
+                <span class="close-modal">&times;</span>
+                <h2>📜 Datapioneers LLC - Terms of Service</h2>
+                
+                <h3>1. Agreement to Terms</h3>
+                <p>By accessing or using the services provided by Datapioneers LLC ("Datapioneers", "we", "us"), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, you must not use our website or services.</p>
+                
+                <h3>2. Services Overview</h3>
+                <p>Datapioneers provides a data technology platform for market research, survey distribution, and digital measurement tools. Our platform enables research clients and partners to engage verified respondents through integrations such as APIs, offerwalls, embedded iframes, or secure distribution channels.</p>
+                
+                <h3>3. Eligibility</h3>
+                <p>You must be a legal entity or an authorized representative of a business to enter into this agreement. Our services are intended for institutional use only.</p>
+                
+                <h3>4. Use of Platform</h3>
+                <p>You agree to use the platform solely for lawful research and data collection purposes. Unauthorized use, including scraping, automated account creation, data reselling, or reverse-engineering, is strictly prohibited.</p>
+                
+                <h3>5. Client Responsibilities</h3>
+                <p>Clients are responsible for:</p>
+                <ul>
+                    <li>Ensuring their surveys and data collection practices comply with applicable laws and industry standards;</li>
+                    <li>Providing accurate targeting parameters and project specifications;</li>
+                    <li>Honoring any data use disclosures provided to respondents (if applicable).</li>
+                </ul>
+                
+                <h3>6. Data Privacy and Security</h3>
+                <p>Datapioneers employs robust technical and organizational safeguards to protect data. While we do not collect or store personally identifiable information unless explicitly required by project scope, all data access and transfers are encrypted and logged. We adhere to major international standards for data handling.</p>
+                
+                <h3>7. Intellectual Property</h3>
+                <p>All intellectual property on the platform, including code, branding, and proprietary methodologies, belongs to Datapioneers LLC. Unauthorized copying, modification, or redistribution is prohibited.</p>
+                
+                <h3>8. API Access and Integration</h3>
+                <p>Clients using our APIs or embedded components agree not to misuse access tokens or disrupt platform stability. We reserve the right to suspend or revoke API access for any abuse or security violation.</p>
+                
+                <h3>9. Limitation of Liability</h3>
+                <p>Datapioneers shall not be liable for any indirect, incidental, or consequential damages arising from platform usage, including but not limited to data loss, business interruption, or third-party service failure.</p>
+                
+                <h3>10. Termination</h3>
+                <p>We reserve the right to suspend or terminate your access to the platform at any time, with or without notice, for conduct that violates these Terms or harms the platform's integrity.</p>
+                
+                <h3>11. Governing Law</h3>
+                <p>These Terms shall be governed by the laws of the State of Wyoming, USA, where Datapioneers LLC is incorporated.</p>
+                
+                <h3>12. Contact</h3>
+                <p>For any inquiries regarding these Terms, please contact us at:</p>
+                <p>📩 support@datapioneer.net</p>
+            </div>
+        </div>
+    `;
+
+    // 创建模态框元素
+    const modalDiv = document.createElement('div');
+    modalDiv.innerHTML = termsOfServiceContent;
+    document.body.appendChild(modalDiv);
+
+    // 关闭模态框的逻辑
+    const closeModal = modalDiv.querySelector('.close-modal');
+    closeModal.addEventListener('click', () => {
+        document.body.removeChild(modalDiv);
+    });
+
+    // 点击模态框外部关闭
+    modalDiv.addEventListener('click', (event) => {
+        if (event.target === modalDiv.querySelector('.terms-of-service-modal')) {
+            document.body.removeChild(modalDiv);
+        }
+    });
+} 
