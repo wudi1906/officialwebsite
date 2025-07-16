@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="styles.css">
     <script src="load-components.js"></script>
     <style>
+        body {
+            margin-top: 110px; /* 为固定导航栏留出空间 */
+        }
+        main {
+            position: relative;
+            top: 0;
+        }
+        .compliance-hero {
+            margin-top: 0; /* 移除顶部margin */
+        }
         :root {
             --primary-purple: #4A3FBB;
             --secondary-blue: #1E2A78;
@@ -40,7 +50,6 @@
             border-radius: 20px;
             overflow: hidden;
             min-height: 600px;
-            margin-top: 80px; /* 为导航栏留出空间 */
         }
         .compliance-hero-text {
             flex: 0 0 50%;
