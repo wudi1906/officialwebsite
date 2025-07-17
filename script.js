@@ -571,7 +571,7 @@ function openCookiePolicy() {
                 <p>If you have questions about this Cookie Policy or how we handle personal data, please contact us at:</p>
                 <address>
                     Datapioneers LLC<br>
-                    Email: support@datapioneers.net<br>
+                    Email: support@datapioneer.net<br>
                     Address: 1908 Thomes Ave Ste 12018, Cheyenne, WY 82001
                 </address>
             </div>
